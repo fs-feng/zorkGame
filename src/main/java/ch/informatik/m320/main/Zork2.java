@@ -1,4 +1,4 @@
-package ch.bbw.zork;
+package ch.informatik.m320.main;
 
 public class Zork2 {
 

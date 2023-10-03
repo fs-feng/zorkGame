@@ -1,14 +1,18 @@
 package ch.informatik.m320.main.game;
 
 import ch.informatik.m320.main.entities.Player;
+import ch.informatik.m320.main.rooms.Room;
+import ch.informatik.m320.main.rooms.RoomMap;
 
 public class Printer {
     private Player player;
     private Parser parser;
+    private RoomMap roomMap;
 
-    public Printer(Player player, Parser parser) {
+    public Printer(Player player, Parser parser, Room[][] roomArray) {
         this.player = player;
         this.parser = parser;
+        roomMap = new RoomMap(roomArray);
     }
 
     public void printWelcome() {
@@ -25,5 +29,9 @@ public class Printer {
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println(parser.showCommands());
+    }
+
+    public void printMap() {
+        roomMap.printMap(player.getCurrentRoom());
     }
 }

@@ -13,6 +13,7 @@ public abstract class Entity {
         this.currentRoom = currentRoom; //Set starting room
     }
 
+    //abstract method for moving
     protected abstract void move(Room room);
 
 

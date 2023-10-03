@@ -1,4 +1,4 @@
-package ch.informatik.m320.main;
+package ch.informatik.m320.main.game;
 
 public class Zork2 {
 

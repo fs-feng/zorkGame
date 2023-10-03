@@ -9,6 +9,7 @@ public class Inventory {
     //constructor
     public Inventory() {
         inventory = new ArrayList<>();
+
     }
 
 

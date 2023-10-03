@@ -1,4 +1,10 @@
 package ch.informatik.m320.main.entities;
 
-public class Enemy extends Entity{
+import ch.informatik.m320.main.game.Command;
+
+public class Enemy {
+
+    public void goRoom() {
+
+    }
 }

@@ -23,6 +23,67 @@ public class Player extends Entity{
 
 
 
+    public void dropItem(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("Drop what item?");
+        } else {
+            String itemName = command.getSecondWord();
+
+
+            for (int index = 0; index <  inventory.getInventory().size(); index++) {
+                System.out.println(inventory.getInventory().get(index).getName());
+                if (inventory.getInventory().get(index).getName().equals(itemName)) {
+
+                    dropDown(index, getCurrentRoom().getInventory());
+                }
+            }
+        }
+    }
+
+    private void dropDown(int index, Inventory roomInventory) {
+        roomInventory.addItem(inventory.removeItem(index));
+    }
+
+    public void pickItem(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("Pick up what?");
+        } else {
+            String itemName = command.getSecondWord();
+
+            ArrayList<Item> roomInventory = getCurrentRoom().getInventory().getInventory();
+
+            for (int index = 0; index <  roomInventory.size(); index++) {
+                System.out.println(roomInventory.get(index).getName());
+                if (roomInventory.get(index).getName().equals(itemName)) {
+
+                    pickUp(index, getCurrentRoom().getInventory());
+                }
+            }
+        }
+    }
+
+    private void pickUp(int index, Inventory roomInventory) {
+        int weight = 0;
+        for (Item item: inventory.getInventory()) {
+            weight += item.getWeight();
+        }
+        weight += roomInventory.getInventory().get(index).getWeight();
+        if (weight <= maxWeight) {
+            inventory.addItem(roomInventory.removeItem(index));
+        } else {
+            System.out.println("It's " + (weight - maxWeight) + "too heavy");
+        }
+    }
+
+    public void showInventory() {
+        for (Item item: inventory.getInventory()) {
+            System.out.printf(item.getName() + ", " + item.getWeight() + "kg | ");
+        }
+        System.out.println();
+    }
+
+
+
     //function to move and check if possible
     public void goRoom(Command command) { //command object with 1 or 2 keywords
         if (!command.hasSecondWord()) { //missing direction

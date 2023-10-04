@@ -27,8 +27,8 @@ public class Printer {
         System.out.println(player.getCurrentRoom().longDescription());
     }
     public void printHelp() {
-        System.out.println("You just woke up. You're aircraft is destroyed. You're");
-        System.out.println("Your aircraft got invaded by an foregein lifeform.");
+        System.out.println("You just woke up in an aircraft which seems to be abandoned.");
+        System.out.println("Your aircraft got invaded by a foreign lifeform.");
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println(parser.showCommands());

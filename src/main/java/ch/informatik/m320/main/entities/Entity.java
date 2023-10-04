@@ -27,5 +27,7 @@ public abstract class Entity {
         this.currentRoom = currentRoom;
     }
 
-
+    public void setHealth(int health){
+        this.health = health;
+    }
 }

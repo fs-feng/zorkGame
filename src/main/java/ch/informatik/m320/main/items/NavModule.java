@@ -13,12 +13,10 @@ public class NavModule extends Item {
     }
 
     @Override
-    public boolean use(Player player, int index) {
+    public void use(Player player, int index) {
         if (player.getCurrentRoom().getDescription().equals("Escape Pod")) {
             System.out.println("Used " + player.getInventory().removeItem(index).getName());
             winChecker.setNavModul(true);
         }
-        return true;
-
     }
 }

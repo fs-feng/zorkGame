@@ -1,19 +1,22 @@
 package ch.informatik.m320.main.items;
 
 import ch.informatik.m320.main.entities.Player;
+import ch.informatik.m320.main.utils.WinChecker;
 
 public class Ration extends Item{
+    private WinChecker winChecker;
     public Ration() {
-        super("Ration", 20);
+        super("Ration", 5);
+
+        winChecker = WinChecker.getInstance();
     }
 
     @Override
-    public boolean use(Player player, int index) {
+    public void use(Player player, int index) {
         if (player.getCurrentRoom().getDescription().equals("Escape Pod")) {
             System.out.println("Used " + player.getInventory().removeItem(index).getName());
-            return true;
-        } else
-            System.out.println("use it in the escape pod");
-            return false;
+
+            winChecker.setRation(true);
+        }
     }
 }

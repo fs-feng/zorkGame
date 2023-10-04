@@ -9,11 +9,8 @@ public class MedKit extends Item{
     }
 
     @Override
-    public boolean use(Player player, int index) {
-        if (player.getCurrentRoom().getDescription().equals("Escape Pod")) {
-            System.out.println("Used " + player.getInventory().removeItem(index).getName());
-            return true;
-        } else
-            return false;
+    public void use(Player player, int index) {
+        System.out.println(" +50HP | Used " + player.getInventory().removeItem(index).getName());
+        //TODO heilung
     }
 }

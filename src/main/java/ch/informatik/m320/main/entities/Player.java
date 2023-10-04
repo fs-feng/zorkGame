@@ -21,22 +21,26 @@ public class Player extends Entity{
         lastRooms = new ArrayList<>();
     }
 
-    public boolean useItem(Command command, Enemy enemy) {
+    public void useItem(Command command, Enemy enemy) {
         if (!command.hasSecondWord()) {
             System.out.println("Use what item?");
         } else {
 
             String itemName = command.getSecondWord();
-
+            boolean isItem = false;
             for (int index = 0; index <  inventory.getInventory().size(); index++) {
                 System.out.println(inventory.getInventory().get(index).getName());
                 if (inventory.getInventory().get(index).getName().equals(itemName)) {
-                    return inventory.getInventory().get(index).use(this, index);
+                    inventory.getInventory().get(index).use(this, index);
+                    isItem = true;
                 }
             }
+
+            if (!isItem) {
+                System.out.println("You don't have this itemmap");
+            }
         }
-        System.out.println("You don't have that item");
-        return false;
+
     }
 
 
@@ -95,7 +99,7 @@ public class Player extends Entity{
             System.out.printf(item.getName() + ", " + item.getWeight() + "kg | ");
             weight += item.getWeight();
         }
-        System.out.printf("capacity: " + weight + "kg /" + maxWeight + "kginv");
+        System.out.printf("capacity: " + weight + "kg /" + maxWeight + "kg");
         System.out.println();
     }
 

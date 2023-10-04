@@ -17,7 +17,7 @@ public class Player extends Entity{
         super(room);
 
         inventory = new Inventory();
-        this.maxWeight = 20;
+        this.maxWeight = 10;
         lastRooms = new ArrayList<>();
     }
 
@@ -48,7 +48,6 @@ public class Player extends Entity{
 
 
             for (int index = 0; index <  inventory.getInventory().size(); index++) {
-                System.out.println(inventory.getInventory().get(index).getName());
                 if (inventory.getInventory().get(index).getName().equals(itemName)) {
                     dropDown(index, getCurrentRoom().getInventory());
                 }
@@ -69,9 +68,7 @@ public class Player extends Entity{
             ArrayList<Item> roomInventory = getCurrentRoom().getInventory().getInventory();
 
             for (int index = 0; index <  roomInventory.size(); index++) {
-                System.out.println(roomInventory.get(index).getName());
                 if (roomInventory.get(index).getName().equals(itemName)) {
-
                     pickUp(index, getCurrentRoom().getInventory());
                 }
             }
@@ -85,16 +82,20 @@ public class Player extends Entity{
         }
         weight += roomInventory.getInventory().get(index).getWeight();
         if (weight <= maxWeight) {
+            System.out.println("Added: " + roomInventory.getInventory().get(index).getName() + " to inventory");
             inventory.addItem(roomInventory.removeItem(index));
         } else {
-            System.out.println("It's " + (weight - maxWeight) + "too heavy");
+            System.out.println("It's " + (weight - maxWeight) + "kg too heavy");
         }
     }
 
     public void showInventory() {
+        int weight = 0;
         for (Item item: inventory.getInventory()) {
             System.out.printf(item.getName() + ", " + item.getWeight() + "kg | ");
+            weight += item.getWeight();
         }
+        System.out.printf("capacity: " + weight + "kg /" + maxWeight + "kginv");
         System.out.println();
     }
 

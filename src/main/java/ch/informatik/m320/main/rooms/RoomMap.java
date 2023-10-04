@@ -82,8 +82,6 @@ public class RoomMap {
                                 break;
                         }
 
-                        //enemy location
-
                     }
                 }
             }

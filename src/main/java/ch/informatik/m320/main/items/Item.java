@@ -14,7 +14,7 @@ public abstract class Item {
     }
 
     //abstract methods
-    public abstract boolean use(Player player, int index); //method to use different items
+    public abstract void use(Player player, int index); //method to use different items
 
 
     //getter

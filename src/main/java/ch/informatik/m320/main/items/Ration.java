@@ -4,7 +4,7 @@ import ch.informatik.m320.main.entities.Player;
 
 public class Ration extends Item{
     public Ration() {
-        super("Ration", 4);
+        super("Ration", 20);
     }
 
     @Override
@@ -13,6 +13,7 @@ public class Ration extends Item{
             System.out.println("Used " + player.getInventory().removeItem(index).getName());
             return true;
         } else
+            System.out.println("use it in the escape pod");
             return false;
     }
 }

@@ -5,7 +5,6 @@ import ch.informatik.m320.main.items.Item;
 
 public class RoomMap {
     private RoomMapItem[][] map;
-    private String[] legende;
     private String[][] roomMap;
 
     public RoomMap(Room[][] roomArray) {
@@ -25,16 +24,34 @@ public class RoomMap {
         }
     }
 
-    public void printMap(Room playerRoom) {
+    public void printMap(Room playerRoom, Room enemyRoom) {
         String black = 	"\u001B[0m";
         String green = "\u001B[32m";
+        String red = "\u001b[31m";
+
         int count1 = 0, count2 = 0, count3 = 0;
         for (int row = 0; row < 5; row++) {
             for (int col = 0; col < 3; col++) {
                 map[row][col].generateLayout(playerRoom);
 
                 for (int iteration = 0; iteration < 5; iteration++) {
-                    if (playerRoom == map[row][col].getRoom()) {
+                    if (enemyRoom == map[row][col].getRoom()) {
+                        switch (col) {
+                            case 0:
+                                roomMap[count1][col] = red + map[row][col].getLayout()[iteration] + black;
+                                count1++;
+                                break;
+                            case 1:
+                                roomMap[count2][col] = red + map[row][col].getLayout()[iteration] + black;
+                                count2++;
+                                break;
+                            case 2:
+                                roomMap[count3][col] = red + map[row][col].getLayout()[iteration] + black;
+                                count3++;
+                                break;
+                        }
+
+                    } else if (playerRoom == map[row][col].getRoom()) {
                         switch (col) {
                             case 0:
                                 roomMap[count1][col] = green + map[row][col].getLayout()[iteration] + black;
@@ -64,6 +81,8 @@ public class RoomMap {
                                 count3++;
                                 break;
                         }
+
+                        //enemy location
 
                     }
                 }

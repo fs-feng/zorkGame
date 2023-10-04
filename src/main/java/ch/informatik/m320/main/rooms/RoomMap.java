@@ -1,6 +1,7 @@
 package ch.informatik.m320.main.rooms;
 
 import ch.informatik.m320.main.entities.Player;
+import ch.informatik.m320.main.items.Item;
 
 public class RoomMap {
     private RoomMapItem[][] map;
@@ -15,7 +16,7 @@ public class RoomMap {
     //use 2d array of rooms to asign to RoomMapItem
     private void setupMapItems(Room[][] roomArray) {
         map = new RoomMapItem[5][3];
-        roomMap = new String[25][3];
+        roomMap = new String[25][4];
 
         for (int row = 0; row < 5; row++) {
             for (int col = 0; col < 3; col++) {
@@ -69,14 +70,37 @@ public class RoomMap {
             }
         }
 
+        createLegend();
+
         for (int row = 0; row < 25; row++) {
-            for (int col = 0; col < 3; col++) {
-                System.out.printf(roomMap[row][col]);
+            for (int col = 0; col < 4; col++) {
+                if (roomMap[row][col] != null)
+                    System.out.printf(roomMap[row][col]);
             }
             System.out.println();
         }
 
 
+    }
+
+    private void createLegend() {
+        int mapRow = 0;
+        for (int row = 0; row < 5; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (map[row][col].getRoom() != null) {
+                    roomMap[mapRow][3] = "        " + map[row][col].getRoom().getDescription() + ":";
+                    mapRow++;
+                    String items = null;
+                    for (Item item: map[row][col].getRoom().getInventory().getInventory()) {
+                        items = item + ", " + items;
+                    }
+                    roomMap[mapRow][3] = "             " + items;
+                    mapRow = mapRow + 1;
+
+                }
+            }
+            System.out.println();
+        }
     }
 
 

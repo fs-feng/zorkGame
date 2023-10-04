@@ -1,12 +1,19 @@
 package ch.informatik.m320.main.items;
 
+import ch.informatik.m320.main.entities.Player;
+
 public class MedKit extends Item{
 
-    public MedKit(String itemName, int itemWeight) {
-        super("Med-Kit", 2);
+    public MedKit() {
+        super("Med-Kit", 3);
     }
 
-    public void useItem(){
-        //item use logic here..
+    @Override
+    public boolean use(Player player, int index) {
+        if (player.getCurrentRoom().getDescription().equals("Escape Pod")) {
+            System.out.println("Used " + player.getInventory().removeItem(index).getName());
+            return true;
+        } else
+            return false;
     }
 }

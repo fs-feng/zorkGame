@@ -2,9 +2,10 @@ package ch.informatik.m320.main.items;
 
 import ch.informatik.m320.main.entities.Player;
 
-public class PodKey extends Item{
-    public PodKey() {
-        super("ignite-key", 1);
+public class EngineCore extends Item{
+
+    public EngineCore() {
+        super("EngineCore", 8);
     }
 
     @Override

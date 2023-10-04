@@ -2,9 +2,9 @@ package ch.informatik.m320.main.items;
 
 import ch.informatik.m320.main.entities.Player;
 
-public class PodKey extends Item{
-    public PodKey() {
-        super("ignite-key", 1);
+public class Ration extends Item{
+    public Ration() {
+        super("Ration", 4);
     }
 
     @Override

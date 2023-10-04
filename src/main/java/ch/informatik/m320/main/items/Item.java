@@ -1,5 +1,7 @@
 package ch.informatik.m320.main.items;
 
+import ch.informatik.m320.main.entities.Player;
+
 public abstract class Item {
     private String name;
     private int weight;
@@ -12,7 +14,7 @@ public abstract class Item {
     }
 
     //abstract methods
-    public abstract void useItem(); //method to use different items
+    public abstract boolean use(Player player, int index); //method to use different items
 
 
     //getter

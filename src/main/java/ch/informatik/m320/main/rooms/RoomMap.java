@@ -90,7 +90,7 @@ public class RoomMap {
                 if (map[row][col].getRoom() != null) {
                     roomMap[mapRow][3] = "        " + map[row][col].getRoom().getDescription() + ":";
                     mapRow++;
-                    String items = null;
+                    String items = "";
                     for (Item item: map[row][col].getRoom().getInventory().getInventory()) {
                         items = item.getName() + ", " + items;
                     }

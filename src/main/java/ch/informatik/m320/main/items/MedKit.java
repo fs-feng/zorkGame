@@ -11,6 +11,6 @@ public class MedKit extends Item{
     @Override
     public void use(Player player, int index) {
         System.out.println(" +50HP | Used " + player.getInventory().removeItem(index).getName());
-        player.setHealth(50);
+        player.heal(50);
     }
 }

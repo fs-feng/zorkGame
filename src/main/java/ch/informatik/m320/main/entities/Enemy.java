@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Enemy extends Entity{
     private Player player;
     public Enemy(Player player, Room room) {
-        super(room);
+        super(room, 100);
         this.player = player;
     }
     public void goRoom() {

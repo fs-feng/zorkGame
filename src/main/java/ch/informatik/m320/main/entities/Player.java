@@ -14,8 +14,7 @@ public class Player extends Entity{
 
 
     public Player(Room room) {
-        super(room);
-
+        super(room, 100);
         inventory = new Inventory();
         this.maxWeight = 10;
         lastRooms = new ArrayList<>();

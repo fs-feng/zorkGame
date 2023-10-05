@@ -9,8 +9,9 @@ public abstract class Entity {
 
 
     //Constructor
-    public Entity(Room currentRoom) {
+    public Entity(Room currentRoom, int health) {
         this.currentRoom = currentRoom; //Set starting room
+        this.health = health;
     }
 
     //abstract method for moving
@@ -27,7 +28,16 @@ public abstract class Entity {
         this.currentRoom = currentRoom;
     }
 
+
     public void setHealth(int health){
-        this.health = health;
+        this.health += health;
+    }
+
+    //heal function for the medkit, if health after healing > 100, then set health to 100
+    public void heal(int health){
+        this.health += health;
+        if(health>100){
+            this.health = 100;
+        }
     }
 }

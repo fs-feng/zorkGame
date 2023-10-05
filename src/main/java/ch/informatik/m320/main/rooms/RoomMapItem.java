@@ -92,7 +92,7 @@ public class RoomMapItem {
 
     private String addName() {
         int remaining = 23 - room.getDescription().length();
-        String name;
+        String name; 
 
         if (room.getExits().get("east") != null && room.getExits().get("west") != null) {
             name = "- " + room.getDescription();

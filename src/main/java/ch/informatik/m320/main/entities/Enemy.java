@@ -42,6 +42,28 @@ public class Enemy extends Entity{
     @Override
     protected void move(Room nextRoom) {
         setCurrentRoom(nextRoom);
-
     }
+
+
+    public void kill() {
+        if (getHealth() <= 0) {
+            setAlive(false);
+            setCurrentRoom(null);
+            System.out.println("You killed the alien, you are save now");
+        }
+    }
+
+    public void attack() {
+        if (player.getCurrentRoom() == getCurrentRoom()) {
+            if (stunGunUsed) {
+                stunGunUsed = false;
+            } else {
+                player.setHealth(player.getHealth() - 40);
+                System.out.println("The alien attacked you for 40 damage");
+                player.kill();
+            }
+        }
+    }
+
+
 }

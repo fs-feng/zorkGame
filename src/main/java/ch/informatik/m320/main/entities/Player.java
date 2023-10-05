@@ -30,8 +30,9 @@ public class Player extends Entity{
             for (int index = 0; index <  inventory.getInventory().size(); index++) {
                 System.out.println(inventory.getInventory().get(index).getName());
                 if (inventory.getInventory().get(index).getName().equals(itemName)) {
+                    if (enemy.getCurrentRoom() == getCurrentRoom() && itemName.equals("StunGun"))  //damage enemy when it is in the same room
+                        stunGunUsed = true;
                     inventory.getInventory().get(index).use(this, index);
-                    isItem = true;
                 }
             }
 
@@ -41,6 +42,8 @@ public class Player extends Entity{
         }
 
     }
+
+
 
 
     public void dropItem(Command command) {
@@ -98,7 +101,7 @@ public class Player extends Entity{
             System.out.printf(item.getName() + ", " + item.getWeight() + "kg | ");
             weight += item.getWeight();
         }
-        System.out.printf("capacity: " + weight + "kg /" + maxWeight + "kg");
+        System.out.printf("capacity: " + weight + "kg /" + maxWeight + "kg   || Health: " + getHealth() + " / 100");
         System.out.println();
     }
 
@@ -139,6 +142,14 @@ public class Player extends Entity{
     protected void move(Room nextRoom) {
         setCurrentRoom(nextRoom); //change rooms
         System.out.println(getCurrentRoom().longDescription()); //show description
+    }
+
+    @Override
+    public void kill() {
+        if (getHealth() <= 0) {
+            setAlive(false);
+            System.out.println("You have been killed by the alien");
+        }
     }
 
 

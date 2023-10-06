@@ -12,10 +12,10 @@ public class Enemy extends Entity{
         this.player = player;
     }
     public void goRoom() {
-        String direction = null;
+        String direction;
         Room nextRoom = null;
         while (nextRoom == null) {
-            int door = ThreadLocalRandom.current().nextInt(1, 5);
+            int door = ThreadLocalRandom.current().nextInt(1, 6);
             switch (door) {
                 case 1:
                     direction = "north";
@@ -29,11 +29,17 @@ public class Enemy extends Entity{
                 case 4:
                     direction = "east";
                     break;
+                case 5:
+                    direction = "stay";
+                    break;
                 default:
                     direction = null;
                     break;
             }
-            nextRoom = getCurrentRoom().nextRoom(direction);
+            if (direction.equals("stay"))
+                nextRoom = getCurrentRoom();
+            else
+                nextRoom = getCurrentRoom().nextRoom(direction);
         }
 
         move(nextRoom);

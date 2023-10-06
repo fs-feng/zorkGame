@@ -72,12 +72,16 @@ public class Player extends Entity{
             String itemName = command.getSecondWord();
 
             ArrayList<Item> roomInventory = getCurrentRoom().getInventory().getInventory();
-
+            boolean isItem = false;
             for (int index = 0; index <  roomInventory.size(); index++) {
                 if (roomInventory.get(index).getName().equals(itemName)) {
                     pickUp(index, getCurrentRoom().getInventory());
+                    isItem = true;
                 }
             }
+
+            if (!isItem)
+                System.out.println("What item do you mean?us");
         }
     }
 

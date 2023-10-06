@@ -15,7 +15,7 @@ public class Enemy extends Entity{
         String direction = null;
         Room nextRoom = null;
         while (nextRoom == null) {
-            int door = ThreadLocalRandom.current().nextInt(1, 4);
+            int door = ThreadLocalRandom.current().nextInt(1, 5);
             switch (door) {
                 case 1:
                     direction = "north";
@@ -59,7 +59,7 @@ public class Enemy extends Entity{
                 stunGunUsed = false;
             } else {
                 player.setHealth(player.getHealth() - 40);
-                System.out.println("The alien attacked you for 40 damage");
+                System.out.println("\u001B[31m" + "The alien attacked you for 40 damage" + "\u001B[0m");
                 player.kill();
             }
         }

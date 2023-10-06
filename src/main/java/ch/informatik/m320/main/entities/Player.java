@@ -28,16 +28,16 @@ public class Player extends Entity{
             String itemName = command.getSecondWord();
             boolean isItem = false;
             for (int index = 0; index <  inventory.getInventory().size(); index++) {
-                System.out.println(inventory.getInventory().get(index).getName());
                 if (inventory.getInventory().get(index).getName().equals(itemName)) {
                     if (enemy.getCurrentRoom() == getCurrentRoom() && itemName.equals("StunGun"))  //damage enemy when it is in the same room
                         stunGunUsed = true;
                     inventory.getInventory().get(index).use(this, index);
+                    isItem = true;
                 }
             }
 
             if (!isItem) {
-                System.out.println("You don't have this itemmap");
+                System.out.println("You don't have this item");
             }
         }
 
